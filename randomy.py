@@ -203,14 +203,20 @@ def create_image(x,y,seed=None,output='show'):
     distribtions.prepare(defs, locked)
     distribtions.run(defs,locked)
     plt.axis('off')
-    if output=="SHOW":
-        plt.imshow(defs['img'])
-        plt.show()
-    else:
+    if output=="io":
+        f = io.BytesIO()
+        plt.savefig(f, format="png", facecolor=(1, 1, 1))
+        encoded_img = f.getvalue()
+        f.close()
+        return encoded_img
+    elif output=="base64":
         f = io.BytesIO()
         plt.savefig(f, format="png", facecolor=(1, 1, 1))
         encoded_img = base64.b64encode(f.getvalue()).decode('utf-8').replace('\n', '')
         f.close()
         return encoded_img
+    else:
+        plt.imshow(defs['img'])
+        plt.show()
 
 
