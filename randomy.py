@@ -192,14 +192,14 @@ polyline(cb=cv2.polylines,must={'pts':('pt','pts'),'isClosed':('',False),'lineTy
 def create_image(x,y,seed=None,output='show'):
     random.seed(seed,version=2)
 
-    img= np.ones(shape=(x, y, 3))
+    img= np.ones(shape=(y, x, 3))
     locked=[]
     pallete=random.choice([item for item in dir(pat) if not item.startswith("__") and item[0].isupper() ])
     #pallete=getattr(sys.modules['palettable.matplotlib'], pallete)
     pallete = getattr(sys.modules['palettable.wesanderson'], pallete)
 
     img[:]=random.choice(list(pallete.mpl_colors))
-    defs = dict(img=img,global_width=x,global_height=y,colors=pallete.mpl_colors,fg_color=random.choice(list(pallete.mpl_colors)), bg_color=random.choice(list(pallete.mpl_colors)))
+    defs = dict(img=img,global_width=y,global_height=x,colors=pallete.mpl_colors,fg_color=random.choice(list(pallete.mpl_colors)), bg_color=random.choice(list(pallete.mpl_colors)))
     distribtions.prepare(defs, locked)
     distribtions.run(defs,locked)
     plt.axis('off')
