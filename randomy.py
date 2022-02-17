@@ -212,7 +212,7 @@ def create_image(x,y,seed=None,output='show'):
         plt.savefig(f, format="png")
         contents = f.getvalue()
         #f.close()
-        return contents,f
+        return contents,f,plt
     elif output=="base64":
         f = io.BytesIO()
         plt.savefig(f, format="png", facecolor=(1, 1, 1))
