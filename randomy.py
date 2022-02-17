@@ -56,7 +56,7 @@ class library:
                 defs[k]=v(defs)
 
         self.item = self.choice()
-        print('Choose ',self.item,clean_defs(defs))
+        #print('Choose ',self.item,clean_defs(defs))
         return defs,locked
 
     def run(self,defs={},locked=[],*args,**kwargs):
@@ -205,10 +205,10 @@ def create_image(x,y,seed=None,output='show'):
     plt.axis('off')
     if output=="io":
         f = io.BytesIO()
-        plt.savefig(f, format="png", facecolor=(1, 1, 1))
+        plt.savefig(f,  format="png")
         encoded_img = f.getvalue()
         f.close()
-        return encoded_img
+        return encoded_img,f
     elif output=="base64":
         f = io.BytesIO()
         plt.savefig(f, format="png", facecolor=(1, 1, 1))
