@@ -208,10 +208,11 @@ def create_image(x,y,seed=None,output='show'):
         #plt.savefig(f,  format="png")
         #encoded_img = f.getvalue()
         #f.close()
-        is_success, im_buf_arr = cv2.imencode(".png",defs['img'])
-        encoded_img = im_buf_arr.tobytes()
+        with io.BytesIO() as f:
+            defs['img'].save(f, format="PNG")
+            contents = f.getvalue()
         #f.close()
-        return encoded_img
+        return contents
     elif output=="base64":
         f = io.BytesIO()
         plt.savefig(f, format="png", facecolor=(1, 1, 1))
