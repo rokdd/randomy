@@ -1,4 +1,4 @@
 
 .gitattributes
-.idea/misc.xml
+.idea/*
 .idea/modules.xml
