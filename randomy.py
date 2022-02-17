@@ -208,9 +208,9 @@ def create_image(x,y,seed=None,output='show'):
         #plt.savefig(f,  format="png")
         #encoded_img = f.getvalue()
         #f.close()
-        with io.BytesIO() as f:
-            plt.savefig(f, format="png")
-            contents = f.getvalue()
+
+        plt.savefig(f, format="png")
+        contents = f.getvalue()
         #f.close()
         return contents,f
     elif output=="base64":
