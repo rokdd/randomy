@@ -207,7 +207,7 @@ def create_image(x,y,seed=None,output='show'):
         f = io.BytesIO()
         plt.savefig(f,  format="png")
         encoded_img = f.getvalue()
-        f.close()
+        #f.close()
         return encoded_img,f
     elif output=="base64":
         f = io.BytesIO()
