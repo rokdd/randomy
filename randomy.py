@@ -205,14 +205,17 @@ def create_image(x,y,seed=None,output='show'):
     plt.axis('off')
     if output=="io":
         f = io.BytesIO()
-        #plt.savefig(f,  format="png")
-        #encoded_img = f.getvalue()
-        #f.close()
 
-        plt.savefig(f, format="png")
+        plt.imsave(f,arr=defs['img'], format="png")
         contents = f.getvalue()
         #f.close()
         return contents,f,plt
+    elif output == "file":
+        cv2.imwrite("file.png", defs['img'])
+        plt.imsave("f.png",arr=defs['img'], format="png")
+        plt.imshow(defs['img'])
+        plt.show()
+        #plt.savefig("file.png", format="png")
     elif output=="base64":
         f = io.BytesIO()
         plt.savefig(f, format="png", facecolor=(1, 1, 1))

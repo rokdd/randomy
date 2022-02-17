@@ -3,7 +3,7 @@
 from  randomy import create_image
 
 if __name__ == '__main__':
-    print(create_image(768, 768 * 2,seed="yourseed",output="io"))
+    print(create_image(768, 768 * 2,seed="yourseed",output="file"))
     exit()
 
     for n in range(10):
